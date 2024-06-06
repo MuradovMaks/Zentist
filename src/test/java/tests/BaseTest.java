@@ -18,8 +18,8 @@ public class BaseTest {
     @BeforeEach
     void setUp() {
         Configuration.pageLoadStrategy = "eager";
-        //Configuration.baseUrl = "https://www.zentist.io/";
-        open("https://www.zentist.io/");
+        Configuration.baseUrl = "https://www.zentist.io/";
+        //open("https://www.zentist.io/");
         Configuration.remote = System.getProperty("Wdhost","https://user1:1234@selenoid.autotests.cloud/wd/hub");
         browser = System.getProperty("Browser","chrome");
         Configuration.browserVersion = System.getProperty("BrowserVersion","120.0");
