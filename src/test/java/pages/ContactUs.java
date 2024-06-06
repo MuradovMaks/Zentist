@@ -4,7 +4,6 @@ import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.SelenideElement;
 import io.qameta.allure.Step;
-import tests.BaseTest;
 
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.open;
@@ -23,10 +22,6 @@ public class ContactUs
     private SelenideElement checkMessage = $("#schedule-form");
     private SelenideElement askQuestion = $("#Question");
 
-    public ContactUs()
-    {
-        open();
-    }
     @Step("Переход к форме ContactUs")
     public ContactUs goToContactUs()
     {
