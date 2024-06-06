@@ -1,4 +1,5 @@
 package tests;
+
 import attachments.Attach;
 import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.Selenide;
@@ -11,7 +12,6 @@ import org.openqa.selenium.remote.DesiredCapabilities;
 import java.util.Map;
 
 import static com.codeborne.selenide.Configuration.browser;
-import static com.codeborne.selenide.Selenide.open;
 
 public class BaseTest {
 
@@ -19,20 +19,17 @@ public class BaseTest {
     void setUp() {
         Configuration.pageLoadStrategy = "eager";
         Configuration.baseUrl = "https://www.zentist.io/";
-        //open("https://www.zentist.io/");
-        Configuration.remote = System.getProperty("Wdhost","https://user1:1234@selenoid.autotests.cloud/wd/hub");
-        browser = System.getProperty("Browser","chrome");
-        Configuration.browserVersion = System.getProperty("BrowserVersion","120.0");
-        Configuration.browserSize = System.getProperty("BrowserSize","1920x1080");
-        SelenideLogger.addListener("allure",new AllureSelenide());
+        Configuration.remote = System.getProperty("Wdhost", "https://user1:1234@selenoid.autotests.cloud/wd/hub");
+        browser = System.getProperty("Browser", "chrome");
+        Configuration.browserVersion = System.getProperty("BrowserVersion", "120.0");
+        Configuration.browserSize = System.getProperty("BrowserSize", "1920x1080");
+        SelenideLogger.addListener("allure", new AllureSelenide());
         DesiredCapabilities capabilities = new DesiredCapabilities();
         capabilities.setCapability("selenoid:options", Map.<String, Object>of(
                 "enableVNC", true,
                 "enableVideo", true
         ));
         Configuration.browserCapabilities = capabilities;
-
-
 
 
     }
