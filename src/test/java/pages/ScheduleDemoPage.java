@@ -3,12 +3,13 @@ package pages;
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.SelenideElement;
 import io.qameta.allure.Step;
+import tests.BaseTest;
 
 import static com.codeborne.selenide.Selenide.$;
-import static com.codeborne.selenide.Selenide.open;
 
-public class ContactUs {
-    private SelenideElement openContactPage = $(".navigation_links [href='/contacts']");
+
+public class ScheduleDemoPage extends BaseTest {
+    private SelenideElement scheduleDemo = $("[href='#schedule-form']");
     private SelenideElement name = $("#First-Name-3");
     private SelenideElement lastname = $("#Last-Name-3");
     private SelenideElement bussinessEmail = $("#Email-3");
@@ -18,77 +19,69 @@ public class ContactUs {
     private SelenideElement refferalCode = $("#referral");
     private SelenideElement submitScheduleForm = $("#schedule-submit");
     private SelenideElement checkMessage = $("#schedule-form");
-    private SelenideElement askQuestion = $("#Question");
 
-    @Step("Открыть страницу")
-    public ContactUs openPage() {
-        open("https://www.zentist.io/");
-        return this;
-    }
 
-    @Step("Переход к форме ContactUs")
-    public ContactUs goToContactUs() {
-        openContactPage.click();
+
+
+    @Step("Переход к форме DemoSchedule")
+    public ScheduleDemoPage goToScheduleForm() {
+        scheduleDemo.click();
         return this;
     }
 
     @Step("Ввод Имени")
-    public ContactUs setName() {
+    public ScheduleDemoPage setName() {
         name.setValue("Max");
         return this;
     }
 
     @Step("Ввод Фамилии")
-    public ContactUs setLastName() {
+    public ScheduleDemoPage setLastName() {
         lastname.setValue("Muradov");
         return this;
     }
 
     @Step("Ввод Email")
-    public ContactUs setBusinessEmail() {
+    public ScheduleDemoPage setBusinessEmail() {
         bussinessEmail.setValue("ABVGD@bk.ru");
         return this;
     }
 
     @Step("Ввод номера телефона")
-    public ContactUs setPhoneNumber() {
+    public ScheduleDemoPage setPhoneNumber() {
         phoneNum.setValue("+79837871133");
         return this;
     }
 
     @Step("Ввод группы")
-    public ContactUs setDentalGroup() {
+    public ScheduleDemoPage setDentalGroup() {
         dentalGroup.setValue("Caribe");
         return this;
     }
 
     @Step("Ввод стажа")
-    public ContactUs setYearsOfPractice() {
+    public ScheduleDemoPage setYearsOfPractice() {
         practice.setValue("8");
         return this;
     }
 
     @Step("Ввод реферального кода")
-    public ContactUs setRefferalCode() {
+    public ScheduleDemoPage setRefferalCode() {
         refferalCode.setValue("39593959195951");
         return this;
     }
 
     @Step("Подтверждение отправки формы")
-    public ContactUs submitForm() {
+    public ScheduleDemoPage submitForm() {
         submitScheduleForm.click();
         return this;
     }
 
     @Step("Проверка текста об успешной отправке формы")
-    public ContactUs assertMessage() {
+    public ScheduleDemoPage assertMessage() {
         checkMessage.shouldHave(Condition.text("Thank you! Your submission has been received!"));
         return this;
     }
 
-    @Step("Ввод вопроса пользователя для формы")
-    public ContactUs askQuestionForm() {
-        askQuestion.setValue("Hello everyone,I'm Qa Engineer");
-        return this;
-    }
+
 }
